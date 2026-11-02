@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claims-api
+  title: Claims API
+  description: Claims intake API (golden-path reference service)
+  tags: [python, golden-path]
+  annotations:
+    github.com/project-slug: markel-devops-demo/claims-api
+    argocd/app-selector: component=claims-api
+    backstage.io/kubernetes-id: claims-api
+    backstage.io/techdocs-ref: dir:.
+  links:
+    - {url: "https://devspaces.apps.nd.azure-na.mobb.cloud/#https://github.com/markel-devops-demo/claims-api", title: Open in Dev Spaces, icon: code}
+    - {url: "https://claims-api-claims-api-sit.apps.nd.azure-na.mobb.cloud", title: SIT, icon: web}
+    - {url: "https://claims-api-claims-api-uat.apps.nd.azure-na.mobb.cloud", title: UAT, icon: web}
+    - {url: "https://openshift-gitops-server-openshift-gitops.apps.nd.azure-na.mobb.cloud/applications?labels=component%253Dclaims-api", title: Argo CD, icon: dashboard}
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-team
+  system: claims

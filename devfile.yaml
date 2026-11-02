@@ -1,0 +1,31 @@
+# Opened by Dev Spaces: a ready-to-code workspace inside the non-prod ARO cluster.
+# No local Kubernetes, no YAML to write. "Run" starts the app with a live preview URL.
+schemaVersion: 2.2.0
+metadata:
+  name: claims-api
+components:
+  - name: tools
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel9:latest
+      memoryLimit: 2Gi
+      mountSources: true
+      env:
+        - {name: ENVIRONMENT, value: dev-workspace}
+        - {name: CERT_PATH, value: /tmp/none}
+      endpoints:
+        - {name: claims-api, targetPort: 8080, exposure: public, protocol: https}
+commands:
+  - id: run
+    exec:
+      label: "Run claims-api"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: python3 app.py
+      group: {kind: run, isDefault: true}
+  - id: smoke-test
+    exec:
+      label: "Smoke test"
+      component: tools
+      workingDir: ${PROJECT_SOURCE}
+      commandLine: curl -s localhost:8080/api
+      group: {kind: test, isDefault: true}
