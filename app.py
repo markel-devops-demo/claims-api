@@ -5,7 +5,7 @@ import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 APP_NAME = os.environ.get("APP_NAME", "claims-api")
-MESSAGE = "Claims intake API · 15:19"
+MESSAGE = "Claims intake API · new banner"
 CERT_PATH = os.environ.get("CERT_PATH", "/etc/claims/tls/tls.crt")
 COLORS = {"sit": "#0078D4", "uat": "#F0AB00", "preview": "#8A3FFC", "spike": "#EE0000"}
 
